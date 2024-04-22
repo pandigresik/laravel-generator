@@ -2,7 +2,6 @@
 
 namespace InfyOm\Generator\Utils;
 
-use DB;
 use Doctrine\DBAL\Schema\AbstractSchemaManager;
 use Doctrine\DBAL\Schema\Column;
 use Illuminate\Support\Facades\Schema;
@@ -266,7 +265,7 @@ class TableFieldsGenerator
         $field = new GeneratorField();
         $field->name = $column['name'];
         $length = get_field_length($column['type']);
-        $field->parseDBType($dbType . ',' . get_field_precision($length) . ',' . get_field_scale($length));
+        $field->parseDBType($dbType.','.get_field_precision($length).','.get_field_scale($length));
         $field->htmlType = 'number';
 
         if ($dbType === 'decimal') {
